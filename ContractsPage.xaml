@@ -1,0 +1,103 @@
+﻿<Page x:Class="GestionHotel.ContractsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GestionHotel"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ContractsPage">
+
+    <Page.Resources>
+        <!-- Style pour les boutons -->
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#4CAF50"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="4">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#388E3C"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Style pour les TextBlock -->
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#212121"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+
+        <!-- Style pour les ListBox -->
+        <Style TargetType="ListBox">
+            <Setter Property="BorderBrush" Value="#DDDDDD"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>
+
+        <!-- Style pour les StackPanel -->
+        <Style TargetType="StackPanel">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="#F5F5F5">
+        <TextBlock Text="Liste des contrats générés" 
+                   FontSize="24" 
+                   FontWeight="Bold" 
+                   Margin="20" 
+                   VerticalAlignment="Top" />
+
+        <!-- Liste des fichiers PDF -->
+        <ListBox x:Name="ContractsListBox" Margin="20,60,20,20">
+            <!-- Chaque élément représente un contrat -->
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <!-- Utilisation d'un Grid pour permettre un alignement propre -->
+                    <Grid Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <!-- Colonne pour le texte -->
+                            <ColumnDefinition Width="Auto"/>
+                            <!-- Colonne pour les boutons -->
+                            <ColumnDefinition Width="Auto"/>
+                            <!-- Colonne pour les boutons -->
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Texte de l'élément -->
+                        <TextBlock Text="{Binding}" FontSize="16" VerticalAlignment="Center" Grid.Column="0"/>
+
+                        <!-- Bouton "Ouvrir" à droite -->
+                        <Button Content="Ouvrir" 
+                                Width="80" 
+                                Margin="10,0,0,0" 
+                                Click="OpenContractButton_Click" 
+                                Background="#4CAF50"
+                                Grid.Column="1" />
+
+                        <!-- Bouton "Supprimer" à droite -->
+                        <Button Content="Supprimer" 
+                                Width="80" 
+                                Margin="10,0,0,0" 
+                                Background="#F44336" 
+                                Click="DeleteContractButton_Click" 
+                                Grid.Column="2" />
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Page>

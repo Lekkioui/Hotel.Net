@@ -1,0 +1,94 @@
+﻿<Page x:Class="GestionHotel.AddOrModifyReservationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GestionHotel"
+      mc:Ignorable="d" d:DesignWidth="800"
+      Title="AddOrModifyReservationPage"
+      Loaded="Page_Loaded" Height="Auto" Width="Auto">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <!-- Titre -->
+            <RowDefinition Height="*" />
+            <!-- Contenu -->
+            <RowDefinition Height="Auto" />
+            <!-- Boutons -->
+        </Grid.RowDefinitions>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1">
+            <StackPanel Margin="20">
+                <TextBlock Text="Informations de la réservation" 
+                          FontSize="20" 
+                          FontWeight="Bold" 
+                          Margin="0,0,0,20"/>
+
+                <GroupBox Header="Client" Margin="0,0,0,10">
+                    <StackPanel Margin="5">
+                        <TextBlock Text="Sélectionner un client :" Margin="0,5"/>
+                        <ComboBox x:Name="ClientComboBox" 
+                                Margin="0,5"
+                                Padding="5"
+                                DisplayMemberPath="NomComplet"
+                                SelectedValuePath="ClientsID"/>
+                    </StackPanel>
+                </GroupBox>
+
+                <GroupBox Header="Dates" Margin="0,0,0,10">
+                    <StackPanel Margin="5">
+                        <TextBlock Text="Date d'arrivée :" Margin="0,5"/>
+                        <DatePicker x:Name="ArrivalDatePicker" 
+                                  Margin="0,5"
+                                  SelectedDateChanged="ArrivalDatePicker_SelectedDateChanged"/>
+
+                        <TextBlock Text="Date de départ :" Margin="0,5"/>
+                        <DatePicker x:Name="DepartureDatePicker" 
+                                  Margin="0,5"
+                                  SelectedDateChanged="DepartureDatePicker_SelectedDateChanged"/>
+                    </StackPanel>
+                </GroupBox>
+
+                <GroupBox Header="Chambre" Margin="0,0,0,10">
+                    <StackPanel Margin="5">
+                        <TextBlock Text="Sélectionner une chambre :" Margin="0,5"/>
+                        <ComboBox x:Name="RoomComboBox" 
+                                Margin="0,5"
+                                Padding="5"
+                                DisplayMemberPath="InfoChambre"
+                                SelectedValuePath="ChambreID"/>
+                    </StackPanel>
+                </GroupBox>
+
+                <GroupBox Header="Statut" Margin="0,0,0,20">
+                    <StackPanel Margin="5">
+                        <TextBlock Text="Statut de la réservation :" Margin="0,5"/>
+                        <ComboBox x:Name="StatusComboBox" 
+                                Margin="0,5"
+                                Padding="5">
+                            <ComboBoxItem Content="Confirmée"/>
+                            <ComboBoxItem Content="En attente"/>
+                            <ComboBoxItem Content="Annulée"/>
+                        </ComboBox>
+                    </StackPanel>
+                </GroupBox>
+
+            </StackPanel>
+        </ScrollViewer>
+
+        <StackPanel Orientation="Horizontal" 
+                   HorizontalAlignment="Right" 
+                   Margin="0,10" Grid.Row="2">
+            <Button Content="Sauvegarder" 
+                    Width="120" 
+                    Height="30"
+                    Margin="0,0,10,0"
+                    Click="SaveButton_Click"/>
+            <Button Content="Annuler" 
+                    Width="120" 
+                    Height="30"
+                    Click="CancelButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>

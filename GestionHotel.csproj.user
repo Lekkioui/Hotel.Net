@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="AddOrModifyClientPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="AddOrModifyReservationPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="AddOrModifyRoomPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="ClientsPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="ContractsPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="dashboardWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="ReservationsPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="RoomsPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UtilisateursPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="AddOrModifyClientPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AddOrModifyReservationPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AddOrModifyRoomPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ClientsPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ContractsPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="dashboardWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ReservationsPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="RoomsPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UtilisateursPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

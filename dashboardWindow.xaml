@@ -1,0 +1,92 @@
+﻿<Window x:Class="GestionHotel.dashboardWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        mc:Ignorable="d"
+        Title="Dashboard - Gestion d'Hôtel" Height="600" Width="900"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <!-- Style des boutons de navigation -->
+        <Style x:Key="NavButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="180" />
+            <Setter Property="Height" Value="45" />
+            <Setter Property="Margin" Value="10" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Background" Value="#3F51B5" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="BorderBrush" Value="#3F51B5" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="5" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                            VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#5C6BC0" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#7986CB" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <!-- Barre de navigation en haut -->
+        <DockPanel Background="#2D2D2D" Height="50" VerticalAlignment="Top">
+
+            <!-- Titre du tableau de bord -->
+            <TextBlock Text="Gestion d'Hôtel - Tableau de bord" Foreground="White" FontSize="18" VerticalAlignment="Center" Margin="10" DockPanel.Dock="Left" />
+
+            <!-- Texte de bienvenue centré -->
+
+            <!-- Bouton de déconnexion -->
+            <Button Content="Déconnexion" DockPanel.Dock="Right" Margin="0,10" Width="120" Height="30" HorizontalAlignment="Right" VerticalAlignment="Center" Click="BtnLogout_Click" />
+            <TextBlock x:Name="WelcomeTextBlock" Text="Bienvenue {username}" Foreground="White" FontSize="18"  DockPanel.Dock="Right" Width="176" Height="26" />
+        </DockPanel>
+
+
+        <!-- Contenu principal -->
+        <Grid Margin="0,50,0,0">
+            <!-- Menu de navigation sur le côté gauche -->
+            <StackPanel Background="#F4F4F4" Width="220" VerticalAlignment="Stretch" HorizontalAlignment="Left">
+                <Button Content="Dashboard" Style="{StaticResource NavButtonStyle}" Click="BtnDasboard_Click" />
+                <Button Content="Clients" Style="{StaticResource NavButtonStyle}" Click="BtnClients_Click" />
+                <Button Content="Chambres" Style="{StaticResource NavButtonStyle}" Click="BtnRooms_Click" />
+                <Button Content="Réservations" Style="{StaticResource NavButtonStyle}" Click="BtnReservations_Click" />
+                <Button Content="Contrats" Style="{StaticResource NavButtonStyle}" Click="BtnContracts_Click" />
+                <Button Content="Utilisateurs" Style="{StaticResource NavButtonStyle}" Click="BtnUtilisateurs_Click" />
+            </StackPanel>
+
+            <!-- Zone principale avec le graphique -->
+            <lvc:CartesianChart x:Name="StatsChart" 
+                    Margin="230,10,10,10"
+                    DisableAnimations="False"
+                    Hoverable="False"
+                    DataTooltip="{x:Null}">
+                <lvc:CartesianChart.AxisY>
+                    <lvc:Axis MinValue="0" />
+                </lvc:CartesianChart.AxisY>
+            </lvc:CartesianChart>
+
+            <!-- Frame pour la navigation des pages -->
+            <Frame x:Name="MainFrame" 
+                   NavigationUIVisibility="Hidden" 
+                   Margin="230,10,10,10" 
+                   VerticalAlignment="Stretch" 
+                   HorizontalAlignment="Stretch" />
+        </Grid>
+    </Grid>
+</Window>
